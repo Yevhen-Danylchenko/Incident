@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Incident.Dtos.IncidentListDto>
+
+@{
+    ViewData["Title"] = "Incidents";
+}
+
+<h2>Incidents</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Create New Incident</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Assigned To</th>
+            <th>Comments</th>
+            <th>Created At</th>
+            <th>Actions</th>
+            <th>Assign To</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var incident in Model)
+        {
+            <tr>
+                <td>@incident.Id</td>
+                <td>@incident.Priority</td>
+                <td>
+                    <span class="badge bg-info">@incident.Status</span>
+                </td>
+                <td>@incident.AssignedTo</td>
+                <td>@incident.Comments</td>
+                <td>@incident.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@incident.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Assign" asp-route-id="@incident.Id" class="btn btn-sm btn-outline-primary">Assign</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

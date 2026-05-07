@@ -1,0 +1,33 @@
+﻿@model Incident.Dtos.IncidentDetailsDto
+
+@{
+    ViewData["Title"] = "Incident Details";
+}
+
+<h2>Incident Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Description</p>
+        <p><strong>Status:</strong> @Model.Status</p>
+        <p><strong>Created At:</strong> @Model.CreatedAt</p>
+    </div>
+</div>
+
+<h4 class="mt-4">Update Status</h4>
+<form asp-action="UpdateStatus" method="post">
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <div class="mb-3">
+        <label for="Status" class="form-label">Status</label>
+        <select name="Status" class="form-select">
+            <option value="Open">Open</option>
+            <option value="InProgress">In Progress</option>
+            <option value="Closed">Closed</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+

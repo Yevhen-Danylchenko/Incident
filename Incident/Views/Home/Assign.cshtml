@@ -1,0 +1,19 @@
+﻿@model Incident.Dtos.AssignIncidentDto
+
+<h2>Assign Incident</h2>
+
+<form asp-action="Assign" method="post">
+    <div class="mb-3">
+        <label asp-for="AssignedTo" class="form-label"></label>
+        <input asp-for="AssignedTo" class="form-control" />
+        <span asp-validation-for="AssignedTo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Comment" class="form-label"></label>
+        <textarea asp-for="Comment" class="form-control"></textarea>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-primary">Assign</button>
+</form>
+
